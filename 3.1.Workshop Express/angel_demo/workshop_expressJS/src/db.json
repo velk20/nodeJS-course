@@ -1,0 +1,67 @@
+{
+  "cubes": [
+    {
+      "id": 1,
+      "name": "Ignacia Ashley",
+      "description": "Sint in et reprehen",
+      "imageUrl": "https://ae01.alicdn.com/kf/HTB1CSddXRxRMKJjy0Fdq6yifFXa6/Gan-356-Air-SM-3x3-Black-Magic-cube-GAN-Air-SM-Magnetic-3x3x3-Speed-cube-gans.jpg",
+      "difficultyLevel": "4"
+    },
+    {
+      "id": 2,
+      "name": "Tobias Gamble",
+      "description": "Est consectetur nec",
+      "imageUrl": "Obcaecati dicta sint",
+      "difficultyLevel": "5"
+    },
+    {
+      "id": 3,
+      "name": "Len Whitfield",
+      "description": "Ipsum neque quaerat ",
+      "imageUrl": "Quia quas elit aut ",
+      "difficultyLevel": "6"
+    },
+    {
+      "id": 4,
+      "name": "Carter Mack",
+      "description": "Temporibus enim comm",
+      "imageUrl": "5",
+      "difficulty": "Non animi ad numqua"
+    },
+    {
+      "name": "Sloane Velez",
+      "description": "Minim nostrum facili",
+      "imageUrl": "6",
+      "difficulty": "4",
+      "id": 5
+    },
+    {
+      "name": "Ivan Hunt",
+      "description": "Perspiciatis obcaec",
+      "imageUrl": "3",
+      "difficulty": "9",
+      "id": 6
+    },
+    {
+      "name": "Montana Mccoy",
+      "description": "Accusamus cupidatat ",
+      "imageUrl": "2",
+      "difficulty": "Id itaque sed quidem",
+      "id": 7
+    },
+    {
+      "name": "Coby Saunders",
+      "description": "Aperiam qui nobis iu",
+      "imageUrl": "3",
+      "difficultyLevel": "Magnam vitae nulla q",
+      "id": 8
+    },
+    {
+      "name": "Evelyn Hodges",
+      "description": "Similique illum rei",
+      "imageUrl": "Possimus omnis quia",
+      "difficultyLevel": "1",
+      "id": 9
+    }
+  ]
+}
