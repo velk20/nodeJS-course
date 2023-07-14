@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose');
+const {Schema, model, Types, SchemaTypes} = require('mongoose');
 const cubeSchema = new Schema({
     name:{
         type:String,
@@ -9,17 +9,27 @@ const cubeSchema = new Schema({
         required: true,
         maxLength:50
     },
-    imageUrl:{
-        type:String,
+    imageUrl: {
+        type: String,
         required: true,
-        //todo add http validation
+        // match: [/^https?:\/\//,'Invalid URL!']
+        validate: {
+            validator: function (v) {
+                return v.startWith('http://') || v.startWith('https://');
+            },
+            message: 'URL is invalid!',
+        }
     },
     difficultyLevel:{
         type: Number,
         required: true,
         max: 6,
         min: 1,
-    }
+    },
+    accessories: [{
+        type: Types.ObjectId,
+        ref: 'Accessory'
+    }]
 })
 const Cube = model('Cube', cubeSchema);
 

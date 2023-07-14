@@ -1,7 +1,6 @@
 const Cube = require('../models/Cube');
 
 exports.getHomePage = async (req,res) => {
-    console.log(req.query);
     const {search, from: difficultyFrom, difficultyTo} = req.query;
 
     let cubes = await Cube.find().lean();
@@ -19,7 +18,7 @@ exports.getHomePage = async (req,res) => {
         cubes = cubes.filter(cube => cube.difficultyLevel <= difficultyTo);
     }
 
-    res.render('index',{cubes, search});
+    res.render('index',{cubes, search, difficultyFrom, difficultyTo});
 }
 
 exports.getAboutPage = ( req,res)=>{
