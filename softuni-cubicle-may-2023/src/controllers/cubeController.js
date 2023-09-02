@@ -26,16 +26,17 @@ router.post('/create', isAuth,async (req, res) => {
     res.redirect('/');
 });
 
-router.get('/:cubeId/details', isAuth,async (req, res) => {
+router.get('/:cubeId/details',async (req, res) => {
     const cube = await cubeManager.getOneWithAccessories(req.params.cubeId).lean();
 
     if (!cube) {
         return res.redirect('/404');
     }
-    const isOwner = cube.owner?.toString() === req.user._id;
+    const isOwner = cube.owner?.toString() === req.user?._id;
 
     res.render('cube/details', { cube, isOwner });
 });
+
 
 router.get('/:cubeId/attach-accessory', isAuth,async (req, res) => {
     const cube = await cubeManager.getOne(req.params.cubeId).lean();
