@@ -1,46 +1,57 @@
 const Cube = require('../models/Cube');
 
 exports.getAll = async (search, from, to) => {
-    let result = await Cube.find().lean();
+  let result = await Cube.find().lean();
 
-    // TODO: use mongoose to filter in the db
-    if (search) {
-        result = result.filter(cube => cube.name.toLowerCase().includes(search.toLowerCase()));
-    }
+  // TODO: use mongoose to filter in the db
+  if (search) {
+    result = result.filter(cube => cube.name.toLowerCase().includes(search.toLowerCase()));
+  }
 
-    if (from) {
-        result = result.filter(cube => cube.difficultyLevel >= Number(from));
-    }
+  if (from) {
+    result = result.filter(cube => cube.difficultyLevel >= Number(from));
+  }
 
-    if (to) {
-        result = result.filter(cube => cube.difficultyLevel <= Number(to));
-    }
+  if (to) {
+    result = result.filter(cube => cube.difficultyLevel <= Number(to));
+  }
 
-    return result;
+  return result;
 };
 
 exports.getOne = (cubeId) => Cube.findById(cubeId);
 exports.getOneWithAccessories = (cubeId) => this.getOne(cubeId).populate('accessories');
 
 exports.create = (cubeData) => {
-    const cube = new Cube(cubeData);
+  const cube = new Cube(cubeData);
 
-    return cube.save();
+  return cube.save();
 };
 
-exports.delete = (cubeId) =>{
-    return Cube.findByIdAndDelete(cubeId);
-}
+exports.delete = (cubeId) => {
+  return Cube.findByIdAndDelete(cubeId);
+};
 
 exports.update = (cubeId, cubeData) => {
-    return Cube.findByIdAndUpdate(cubeId, cubeData);
-}
+  return Cube.findByIdAndUpdate(cubeId, cubeData);
+};
 
 exports.attachAccessory = async (cubeId, accessoryId) => {
-    // return Cube.findByIdAndUpdate(cubeId, { $push: { accessories: accessoryId } });
+  // return Cube.findByIdAndUpdate(cubeId, { $push: { accessories: accessoryId } });
 
-    const cube = await Cube.findById(cubeId);
-    cube.accessories.push(accessoryId);
+  const cube = await Cube.findById(cubeId);
+  cube.accessories.push(accessoryId);
 
-    return cube.save();
+  return cube.save();
+};
+
+exports.getDifficultyOptionsViewData = (difficultyLevel) => {
+    const titles = ['Very Easy', 'Easy', 'Medium', ' Intermediate', 'Expert', 'Hardcore'];
+    const options = titles.map((title, index) => ({
+        title: `${index + 1} - ${title}`,
+        value: index + 1,
+        selected: Number(difficultyLevel) === index + 1,
+    }));
+
+    return options;
 };
