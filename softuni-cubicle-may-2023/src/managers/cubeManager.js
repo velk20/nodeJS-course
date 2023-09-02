@@ -28,6 +28,14 @@ exports.create = (cubeData) => {
     return cube.save();
 };
 
+exports.delete = (cubeId) =>{
+    return Cube.findByIdAndDelete(cubeId);
+}
+
+exports.update = (cubeId, cubeData) => {
+    return Cube.findByIdAndUpdate(cubeId, cubeData);
+}
+
 exports.attachAccessory = async (cubeId, accessoryId) => {
     // return Cube.findByIdAndUpdate(cubeId, { $push: { accessories: accessoryId } });
 
