@@ -2,13 +2,23 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
-  username: String, password: {
+  username: {
     type: String,
-    // validate: {
-    //   validator: function (value) {
-    //     return this.repeatPassword === value; repeatPassword is UNDEFINED
-    //   }, message: `Password mismatch!`,
-    // }
+    required: [true, 'Username is required'],
+    minLength: 5,
+    match: [/^[A-Za-z0-9]+$/, 'Username must be alphanumeric'],
+    unique: true
+  },
+
+  password: {
+    type: String,
+    required: true,
+    validate: {
+      validator: function (value) {
+        return /^[A-Za-z0-9]+$/.test(value);
+      }, message: `Invalid Password!`,
+    },
+    minLength: 8,
   },
 });
 
@@ -21,20 +31,20 @@ userSchema.virtual('repeatPassword')
   });
 
 //! Validate if username already exists
-userSchema.pre('validate', async function(){
+userSchema.pre('validate', async function () {
   const username = this.username;
   const user = await User.findOne({username});
   if (user != null) {
     throw new mongoose.MongooseError('Username already exists!');
   }
-})
+});
 
 
-//! Hashing the password
-userSchema.pre('save',async function (){
+//! Hashing the password before save
+userSchema.pre('save', async function () {
   const hash = await bcrypt.hash(this.password, 10);
   this.password = hash;
-})
+});
 
 const User = mongoose.model('User', userSchema);
 

@@ -21,16 +21,23 @@ app.get('/', (req, res) => {
     <label for="age">Age</label>
     <input type="number" name="age" id="age">
     
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email">
+    
     <input type="submit" value="create">
 </form>`);
 });
+
+const bodyEmailValidator = body('email').isEmail().normalizeEmail()
 
 app.post('/',
   validateName,
   body('password')
     .isLength({min:3, max:20})
     .isStrongPassword()
+    .trim()
     .withMessage('Invalid password by express-validator'),
+  bodyEmailValidator,
   (req,res)=>{
   const {name, age, password} = req.body;
 
