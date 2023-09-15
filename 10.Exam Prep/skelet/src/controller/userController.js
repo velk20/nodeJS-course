@@ -30,7 +30,7 @@ router.post('/register', async (req, res) => {
     res.cookie('token', token);
     res.redirect('/');
   } catch (e) {
-    res.render('users/register', {error: getErrorMessage(e)});
+    res.render('users/register', {error: getErrorMessage(e), username, email});
   }
 
 });
