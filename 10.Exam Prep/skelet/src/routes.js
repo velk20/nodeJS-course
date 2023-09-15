@@ -1,10 +1,11 @@
 const router = require('express').Router();
 
-// TODO : add controller routes
+const homeController = require('./controller/homeController');
+const userController = require('./controller/userController');
 
-router.get('/',(req,res)=>{
-  res.render('home');
+router.use(homeController);
+router.use('/users', userController);
+router.get('*', (req,res)=>{
+  res.redirect('/404');
 })
-
-
 module.exports = router

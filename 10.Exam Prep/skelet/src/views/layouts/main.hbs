@@ -9,22 +9,23 @@
 
 
 <body>
-<!--Error Container-->
 
-<!-- <div>
-    <div class="errorContainer">
-        <p>Error</p>
+{{#if error}}
+    <div>
+        <div class="errorContainer">
+            <p>{{error}}</p>
+        </div>
     </div>
-</div> -->
+{{/if}}
 
 <header>
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <a href="#">
+                <a href="/">
                     <img width="50px" src="/static/images/free-30-instagram-stories-icons23_122570.png" alt="img1">
                 </a>
-                <a class="home" href="#">
+                <a class="home" href="/">
                     <i>Petstagram</i>
                 </a>
             </div>
@@ -37,34 +38,39 @@
                         </a>
                     </li>
 
-                    <li class="nav-item">
-                        <a href="#">
-                            <i>Login</i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">
-                            <i>Register</i>
-                        </a>
-                    </li>
+                    {{#if isAuthenticated}}
+                        <li class="nav-item">
+                            <a href="#">
+                                <i>Add Photo</i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#">
+                                <i>Profile</i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/users/logout">
+                                <i>Logout</i>
+                            </a>
+                        </li>
+                    {{else}}
+                        <li class="nav-item">
+                            <a href="/users/login">
+                                <i>Login</i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/users/register">
+                                <i>Register</i>
+                            </a>
+                        </li>
+                    {{/if}}
 
-                    <li class="nav-item">
-                        <a href="#">
-                            <i>Add Photo</i>
-                        </a>
-                    </li>
 
-                    <li class="nav-item">
-                        <a href="#">
-                            <i>Profile</i>
-                        </a>
-                    </li>
 
-                    <li class="nav-item">
-                        <a href="#">
-                            <i>Logout</i>
-                        </a>
-                    </li>
+
+
                 </ul>
             </div>
         </div>

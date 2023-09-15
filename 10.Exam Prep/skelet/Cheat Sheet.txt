@@ -20,7 +20,7 @@
     * add partial template folder
 4. Add home controller
     * add controller to routes
-5. Connect database
+5. Connect database : npm i mongoose
     * set strict query / deprecation warning
 6. Authentication
     * fix html links in layout
@@ -29,7 +29,7 @@
     * add login page
 7. Add user model
 8. Add auth service
-9. Install bcrypt and cookie-parser and configure
+9. Install bcrypt and cookie-parser and configure : npm i bcrypt cookie-parser
 10. Register user
     * validate repeat password
     * check if user exists
@@ -37,7 +37,7 @@
 11. Login user
     * check if user exists
     * check if password is valid
-12. Generate jwt token
+12. Generate jwt token: npm i jsonwebtoken
     * OPTIONAL: use util.promisify to use async
     * generate token with payload
     * add token to cookie
