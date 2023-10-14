@@ -14,7 +14,23 @@ const userSchema = new mongoose.Schema({
     type:String,
     required: [true, 'Email is required'],
     unique: true,
-  }
+ },
+  // owner: {
+//   type: mongoose.Types.ObjectId, ref: 'User',
+// },
+// commentList: [
+//   {
+//     user: {
+//       type: mongoose.Types.ObjectId,
+//       required: true,
+//       ref: 'User',
+//     },
+//     message: {
+//       type: String,
+//       required: [true, 'Comment message is required!']
+//     },
+//   }
+// ]
 })
 
 userSchema.pre('save', async function () {
