@@ -1,3 +1,4 @@
+
 const Animal = require('../models/Animal');
 const User = require('../models/User');
 const assert = require('assert');
@@ -22,7 +23,7 @@ exports.deleteAnimal = (animalId) => Animal.findByIdAndDelete(animalId);
 exports.addDonation = async (animalId, userId) => {
     const animal = await Animal.findById(animalId);
     const user = await User.findById(userId);
-    animal.donations.push(user);
+    animal.donations.push(user._id);
 
     return animal.save();
 };

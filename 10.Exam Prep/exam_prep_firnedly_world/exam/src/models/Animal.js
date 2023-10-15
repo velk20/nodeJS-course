@@ -17,11 +17,7 @@ const animalSchema = new mongoose.Schema({
         type: String, required: [true, 'Animal description is required'], min:5, max:50
     }, owner: {
         type: mongoose.Types.ObjectId, required: true, ref: 'User'
-    }, donations: [{
-        user: {
-            type: mongoose.Types.ObjectId, required: true, ref: 'User'
-        }
-    }]
+    }, donations: [{ type: mongoose.Types.ObjectId, ref: 'User' }]
 });
 
 const Animal = mongoose.model('Animal', animalSchema);

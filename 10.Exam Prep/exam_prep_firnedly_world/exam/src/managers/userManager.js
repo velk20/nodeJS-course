@@ -22,7 +22,7 @@ exports.register = async (userData) => {
   if (user) {
     throw  new Error('Email already exit');
   }
-  const userPromise = User.create(userData);
+  const userPromise = await User.create(userData);
   return await generateToken(userPromise);
 };
 
