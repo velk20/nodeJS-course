@@ -2,15 +2,15 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('../lib/jwt');
 
-exports.login = async (username, password) => {
-    const user = await User.findOne({ username });
+exports.login = async (email, password) => {
+    const user = await User.findOne({ email });
     if (!user) {
-        throw new Error('Invalid username or password');
+        throw new Error('Invalid email or password');
     }
 
     const isValid = await bcrypt.compare(password, user.password);
     if (!isValid) {
-        throw new Error('Invalid username or password');
+        throw new Error('Invalid email or password');
     }
 
     return await generateToken(user);
