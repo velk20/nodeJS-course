@@ -3,6 +3,7 @@ const cryptoSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, 'Name is required'],
+        min: 2
     },
     image: {
         type: String,
@@ -11,14 +12,17 @@ const cryptoSchema = new mongoose.Schema({
     },
     price: {
         type: Number,
-        required: [true, 'Price is required']
+        required: [true, 'Price is required'],
+        min: 1
     },
     description:{
         type: String,
-        required: [true, 'Description is required']
+        required: [true, 'Description is required'],
+        min: 10
     },
     payment:{
         type: String,
+        enum: ['crypto-wallet', 'credit-card', 'debit-card', 'paypal'],
         required: [true, 'Payment Method is required']
     },
     owner: {

@@ -5,32 +5,19 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Username is required'],
     unique: true,
+    min: 5
   },
   password:{
     type:String,
     required: [true, 'Password is required'],
+    min: 4
   },
   email:{
     type:String,
     required: [true, 'Email is required'],
     unique: true,
+    min: 10
  },
-  // owner: {
-//   type: mongoose.Types.ObjectId, ref: 'User',
-// },
-// commentList: [
-//   {
-//     user: {
-//       type: mongoose.Types.ObjectId,
-//       required: true,
-//       ref: 'User',
-//     },
-//     message: {
-//       type: String,
-//       required: [true, 'Comment message is required!']
-//     },
-//   }
-// ]
 })
 
 userSchema.pre('save', async function () {
