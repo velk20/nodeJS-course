@@ -6,6 +6,7 @@
 - in package.json =>  "scripts": {
                          "start": "nodemon src/index.js"
                        },
+---- npm i express express-handlebars mongoose bcrypt cookie-parser jsonwebtoken                       
 - npm i express :
 
 2. Install & setup express
