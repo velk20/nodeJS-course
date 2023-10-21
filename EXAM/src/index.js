@@ -9,9 +9,8 @@ const { errorHandler } = require('./middlewares/errorHandlerMiddleware');
 
 const app = express();
 
-//TODO change db name at the end
 mongoose
-    .connect(`mongodb://127.0.0.1:27017/petstagram`)
+    .connect(`mongodb://127.0.0.1:27017/electronics`)
     .then(() => console.log(`DB connected!`))
     .catch((err) => console.log('DB Error', err));
 
@@ -43,4 +42,4 @@ hbs.handlebars.registerHelper('select', function (selected, options) {
         );
 });
 
-app.listen(5000, console.log('Server is listening on port 5000...'));
+app.listen(3000, console.log('Server is listening on port 3000...'));
